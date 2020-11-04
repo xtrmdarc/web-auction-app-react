@@ -1,0 +1,30 @@
+
+@mixin Header {
+  display: flex;
+  padding: 0 $closeSpace;
+  height: $headerHeight;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: $lightBoxShadow;
+
+  .navigationLinks {
+    display: flex;
+
+    li {
+      display: flex;
+      margin-right: $closeSpace;
+    }
+  }
+
+  // .userActions {
+
+  //   .logoutButton {
+  //     background: red;
+  //     color: white;
+  //   }
+  // }
+}
+
+.Header {
+  @include Header();
+}
