@@ -1,22 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
-import util from '../../services/util';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { setActiveItem } from '../../actions';
+import CountDown from '../Util/CountDown';
 
 const Item = (props) => {
   const {item, onBidNowClick} = props;
-
-  const [timeRemaining, setTimeRemaining] = useState('');
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeRemaining(util.getTimeRemaining(new Date(item.end_date.replace(' ', 'T'))));
-    }, 1000);
-
-    return () => {clearTimeout(timer)};
-  });
 
   return (
     <div className="Item">
@@ -28,8 +18,7 @@ const Item = (props) => {
           <span>{item.description}</span>
         </div>
       </div>
-      
-      <h2>{timeRemaining} </h2>
+      <h2><CountDown endDate={item.end_date} /></h2>
       <h2>${item.last_bid ? item.last_bid.amount : (0.00).toFixed(2)} </h2>
       <button onClick={() => onBidNowClick(item)} className="bidNowButton">
         Bid now

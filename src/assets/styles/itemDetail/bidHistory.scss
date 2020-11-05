@@ -1,0 +1,10 @@
+
+@mixin BidHistory() {
+  display: flex;
+  padding: $closeSpace;
+  box-shadow: $aboveBoxShadow;
+}
+
+.BidHistory {
+  @include BidHistory;
+}

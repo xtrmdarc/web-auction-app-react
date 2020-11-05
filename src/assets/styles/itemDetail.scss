@@ -1,7 +1,35 @@
 
 @import './variables';
+@import './itemDetail/bidAction.scss';
+@import './itemDetail/bidHistory.scss';
 
 .ItemDetail {
   padding: 0 $closeSpace;
   margin-top: $broadSpace;
+
+  h1 {
+    text-transform: capitalize;
+    font-size: 40px;
+    margin-bottom: $closeSpace;
+  }
+  
+  .description {
+    line-height: 24px;
+    font-size: $mediumTextSize;
+  }
+
+  .actionsWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $broadSpace;
+    width: 100%;
+
+    .BidAction {
+      width: calc(60% - 10px);
+    }
+
+    .BidHistory {
+      width: calc(40% - 10px);
+    }
+  }
 }

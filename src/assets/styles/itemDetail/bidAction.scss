@@ -1,0 +1,10 @@
+
+@mixin BidAction() {
+  display: flex;
+  padding: $closeSpace;
+  box-shadow: $aboveBoxShadow;
+}
+
+.BidAction {
+  @include BidAction;
+}
