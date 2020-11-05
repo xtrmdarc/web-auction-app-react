@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import util from '../../services/util';
+import {withRouter} from 'react-router-dom';
 
 const Item = (props) => {
-  const {item} = props;
+  const {item, onBidNowClick} = props;
 
   const [timeRemaining, setTimeRemaining] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log();
       const seconds = new Date().getSeconds();
       setTimeRemaining(util.getTimeRemaining(new Date(item.end_date.replace(' ', 'T'))));
     }, 1000);
@@ -30,15 +30,20 @@ const Item = (props) => {
       
       <h2>{timeRemaining} </h2>
       <h2>${item.last_bid ? item.last_bid.amount : (0.00).toFixed(2)} </h2>
-      <button className="bidNowButton">
+      <button onClick={() => onBidNowClick(item.id)} className="bidNowButton">
         Bid now
       </button>
     </div>
   );
 };
 
-const ItemsList = () => {
+const ItemsList = (props) => {
   const [items, setItems] = useState([]);
+  const {history} = props;
+
+  const onBidNowClick = (itemId) => {
+    history.push(`/items/${itemId}`);
+  }
 
   useEffect(() => {
     api.getActiveItems().then(p => {
@@ -49,9 +54,9 @@ const ItemsList = () => {
 
   return (
     <div className="ItemsList">
-      {items.map(item => <Item key={item.id} item={item} />)}
+      {items.map(item => <Item key={item.id} item={item} onBidNowClick={onBidNowClick} />)}
     </div>
   );
 }
 
-export default ItemsList;
+export default withRouter(ItemsList);

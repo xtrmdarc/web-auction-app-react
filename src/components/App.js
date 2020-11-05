@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './Home';
+import ItemDetail from './ItemDetail';
 import '../assets/styles/app.scss';
 
 import {
@@ -13,7 +14,11 @@ const App = () => {
   return(
     <Router>
       <Switch>
-        <Route to="/">
+        <Route exact path="/items/:itemId">
+          <Header />
+          <ItemDetail />
+        </Route>
+        <Route exact path="/">
           <Header />
           <Home />
         </Route>

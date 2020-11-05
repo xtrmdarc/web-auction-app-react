@@ -7,6 +7,12 @@
   justify-content: space-between;
   box-shadow: $lightBoxShadow;
 
+  .logo {
+    text-decoration: none;
+    text-transform: none;
+    color: inherit;
+  }
+
   .navigationLinks {
     display: flex;
 
@@ -15,14 +21,6 @@
       margin-right: $closeSpace;
     }
   }
-
-  // .userActions {
-
-  //   .logoutButton {
-  //     background: red;
-  //     color: white;
-  //   }
-  // }
 }
 
 .Header {
