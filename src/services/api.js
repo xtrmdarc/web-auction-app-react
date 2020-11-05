@@ -15,8 +15,25 @@ const api = (() => {
     const data = await response.json();
     return data;
   };
+
+  const submitBid = async ( itemId, userId, amount) => {
+
+    const response = await fetch(`${domain}/bids`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId,
+        itemId,
+        amount,
+      }),
+    });
+    const data = await response.json();
+    return data;
+  };
   
-  return {getActiveItems, getItem};
+  return {getActiveItems, getItem, submitBid};
 })();
 
 export default api;

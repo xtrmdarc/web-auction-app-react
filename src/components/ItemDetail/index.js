@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 import '../../assets/styles/itemDetail.scss';
 import BidAction from './BidAction';
 import BidHistory from './BidHistory';
+import { setActiveItem } from '../../actions';
+import api from '../../services/api';
+import {withRouter} from 'react-router-dom';
 
 const ItemDetail = props => {
 
-  const {activeItem} = props;
+  const {activeItem, setActiveItem, match} = props;
+
+  useEffect(() => {
+    api.getItem(match.params.itemId)
+      .then(item => {
+        setActiveItem(item);
+      });
+  }, []);
 
   return (
     <div className="ItemDetail">
@@ -14,7 +24,7 @@ const ItemDetail = props => {
       <p className="description">{activeItem.description}</p>
       <div className="actionsWrapper">
         <BidAction item={activeItem} />
-        <BidHistory />
+        <BidHistory bidsHistory={activeItem.bids} />
       </div>
     </div>
   );
@@ -24,4 +34,8 @@ const mapStateToProps = state => ({
   activeItem: state.activeItem,
 });
 
-export default connect(mapStateToProps)(ItemDetail);
+const mapDispatchToProps = dispatch => ({
+  setActiveItem: (item) => dispatch(setActiveItem(item)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ItemDetail));

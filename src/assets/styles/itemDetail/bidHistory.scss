@@ -3,6 +3,17 @@
   display: flex;
   padding: $closeSpace;
   box-shadow: $aboveBoxShadow;
+  flex-direction: column;
+
+  .sectionTitle {
+    margin-bottom: $closeSpace;
+  }
+
+  .bidHistoryItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: calc(#{$closeSpace} / 3);
+  }
 }
 
 .BidHistory {
