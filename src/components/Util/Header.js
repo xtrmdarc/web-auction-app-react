@@ -13,8 +13,7 @@ const Header = () => {
         </ul>
       </nav>
       <div className="userActions">
-        <img alt="User configuration"/>
-        {/* <button className="logoutButton">Logout</button> */}
+        <button className="config">Configuration</button>
       </div>
     </header>
   );

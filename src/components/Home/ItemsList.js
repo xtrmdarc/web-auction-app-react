@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import util from '../../services/util';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 const Item = (props) => {
   const {item, onBidNowClick} = props;
@@ -10,7 +11,6 @@ const Item = (props) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const seconds = new Date().getSeconds();
       setTimeRemaining(util.getTimeRemaining(new Date(item.end_date.replace(' ', 'T'))));
     }, 1000);
 
@@ -39,7 +39,7 @@ const Item = (props) => {
 
 const ItemsList = (props) => {
   const [items, setItems] = useState([]);
-  const {history} = props;
+  const {history, filter} = props;
 
   const onBidNowClick = (itemId) => {
     history.push(`/items/${itemId}`);
@@ -52,11 +52,21 @@ const ItemsList = (props) => {
     });
   }, []);
 
+  const categoryNameRegex = new RegExp(filter, 'gi');
+
   return (
     <div className="ItemsList">
-      {items.map(item => <Item key={item.id} item={item} onBidNowClick={onBidNowClick} />)}
+      {
+        items
+          .filter(item => filter === '' || (`${item.item_name} ${item.description}`).match(categoryNameRegex))
+          .map(item => <Item key={item.id} item={item} onBidNowClick={onBidNowClick} />)
+      }
     </div>
   );
 }
 
-export default withRouter(ItemsList);
+const mapStateToProps = state => ({
+  filter: state.items.filter,
+});
+
+export default connect(mapStateToProps)(withRouter(ItemsList));

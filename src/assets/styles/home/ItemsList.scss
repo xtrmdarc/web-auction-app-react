@@ -6,6 +6,7 @@
   padding: $closeSpace calc(#{$closeSpace} * 1.6);
   border-radius: 20px;
   box-shadow: $aboveBoxShadow;
+  margin-bottom: $broadSpace;
 
   .Item {
     display: flex;
@@ -43,7 +44,10 @@
       font-family: $titleFontFamily;
       box-shadow: $lightBoxShadow;
     }
-    
+  }
+
+  .Item:last-child {
+    border-bottom: none;
   }
 }
 
