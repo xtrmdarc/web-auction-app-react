@@ -17,6 +17,6 @@ const api = (() => {
   };
   
   return {getActiveItems, getItem};
-});
+})();
 
 export default api;

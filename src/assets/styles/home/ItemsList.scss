@@ -1,0 +1,51 @@
+
+@mixin ItemsList() {
+  display: flex;
+  flex-direction: column;
+  margin-top: $closeSpace;
+  padding: $closeSpace calc(#{$closeSpace} * 1.6);
+  border-radius: 20px;
+  box-shadow: $aboveBoxShadow;
+
+  .Item {
+    display: flex;
+    padding: calc(#{$closeSpace} * 1.5) 0;
+    justify-content: space-between;
+    border-bottom: 0.4px solid rgba(146, 146, 146, 0.349);
+    
+    .leftSide {
+      display: flex;
+      width: 40%;
+      .image {
+        margin-right: calc(#{$closeSpace} * 1.4);
+      }
+  
+      .info {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          margin-bottom: $closeSpace;
+        }
+      }
+    }
+
+    .bidNowButton {
+      background: none;
+      align-self: flex-start;
+      padding: $closeSpace;
+      background: rgb(29, 87, 194);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      font-family: $titleFontFamily;
+      box-shadow: $lightBoxShadow;
+    }
+    
+  }
+}
+
+.ItemsList {
+  @include ItemsList;
+}

@@ -1,9 +1,14 @@
 import React from 'react'
 import '../../assets/styles/home.scss';
+import ItemsFilter from './ItemsFilter';
+import ItemsList from './ItemsList';
+
 const Home = () => {
   return (
     <div className="Home">
-      <h1>Items on sale</h1>
+      <ItemsFilter />
+      <h1 className="mainTitle">Items on sale</h1>
+      <ItemsList />
     </div>
   );
 }
