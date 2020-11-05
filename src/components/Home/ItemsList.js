@@ -3,6 +3,7 @@ import api from '../../services/api';
 import util from '../../services/util';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { setActiveItem } from '../../actions';
 
 const Item = (props) => {
   const {item, onBidNowClick} = props;
@@ -30,7 +31,7 @@ const Item = (props) => {
       
       <h2>{timeRemaining} </h2>
       <h2>${item.last_bid ? item.last_bid.amount : (0.00).toFixed(2)} </h2>
-      <button onClick={() => onBidNowClick(item.id)} className="bidNowButton">
+      <button onClick={() => onBidNowClick(item)} className="bidNowButton">
         Bid now
       </button>
     </div>
@@ -39,15 +40,15 @@ const Item = (props) => {
 
 const ItemsList = (props) => {
   const [items, setItems] = useState([]);
-  const {history, filter} = props;
+  const {history, filter, setActiveItem} = props;
 
-  const onBidNowClick = (itemId) => {
-    history.push(`/items/${itemId}`);
+  const onBidNowClick = (item) => {
+    setActiveItem(item);
+    history.push(`/items/${item.id}`);
   }
 
   useEffect(() => {
     api.getActiveItems().then(p => {
-      console.log(p);
       setItems(p);
     });
   }, []);
@@ -69,4 +70,8 @@ const mapStateToProps = state => ({
   filter: state.items.filter,
 });
 
-export default connect(mapStateToProps)(withRouter(ItemsList));
+const mapDispatchToProps = dispatch => ({
+  setActiveItem: (item) => dispatch(setActiveItem(item)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ItemsList));

@@ -1,4 +1,4 @@
-const { FILTER_ITEMS } = require("../actions");
+import { FILTER_ITEMS } from '../actions';
 
 const INITIAL_STATE = {
   filter: '',
