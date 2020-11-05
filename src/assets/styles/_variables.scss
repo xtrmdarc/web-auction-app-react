@@ -50,5 +50,15 @@ a {
   color: inherit;
 }
 
-
-
+@mixin bidNowButton() {
+  background: none;
+  align-self: flex-start;
+  padding: $closeSpace;
+  background: rgb(29, 87, 194);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  font-family: $titleFontFamily;
+  box-shadow: $lightBoxShadow;
+}

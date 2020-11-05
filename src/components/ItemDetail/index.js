@@ -13,7 +13,7 @@ const ItemDetail = props => {
       <h1>{activeItem.item_name}</h1>
       <p className="description">{activeItem.description}</p>
       <div className="actionsWrapper">
-        <BidAction />
+        <BidAction item={activeItem} />
         <BidHistory />
       </div>
     </div>

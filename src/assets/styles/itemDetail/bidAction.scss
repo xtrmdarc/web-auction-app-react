@@ -3,6 +3,60 @@
   display: flex;
   padding: $closeSpace;
   box-shadow: $aboveBoxShadow;
+  flex-direction: column;
+
+  .countDown {
+    align-self: center;
+    font-size: 50px;
+    margin: $broadSpace 0;
+  }
+
+  .action {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    align-items: flex-end;
+
+    label {
+      align-self: flex-start;
+      margin-bottom: calc(#{$closeSpace} / 3);
+      font-size: 14px;
+    }
+
+    input[type="number"] {
+      border: none;
+      border-bottom: 1px solid black;
+      text-align: center;
+      padding: 8px;
+      font-size: $bigTextSize;
+      width: 200px;
+      max-width: 100%;
+    }
+
+    .bidActionWrapper {
+      margin-top: $closeSpace;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .autoBid {
+        margin-right: $closeSpace;
+        font-size: 12px;
+        display: flex;
+        align-self: auto;
+
+        input {
+          margin-right: 4px;
+        }
+      }
+
+      button {
+        @include bidNowButton;
+        align-self: auto;
+      }
+    }
+
+  }
 }
 
 .BidAction {
