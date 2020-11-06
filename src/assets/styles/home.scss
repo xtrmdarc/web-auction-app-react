@@ -1,6 +1,6 @@
 
 @import './variables';
-@import "./home/SortButton.scss";
+@import '../styles/home/SortButton.scss';
 @import './home/ItemsFilter.scss';
 @import './home/ItemsList.scss';
 @import './home/PaginationLinks.scss';
@@ -23,7 +23,7 @@
       align-items: center;
 
       .SortButton {
-        
+
       }
 
       .PaginationLinks {
