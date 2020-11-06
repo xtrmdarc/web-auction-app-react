@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
+  const {username} = props;
+
   return (
     <header className="Header">
       <Link to="/" className="logo"><h3> Antique Seller</h3></Link>
@@ -13,6 +15,7 @@ const Header = () => {
         </ul>
       </nav>
       <div className="userActions">
+        <span className="username">{username}</span>
         <button className="config">Configuration</button>
       </div>
     </header>

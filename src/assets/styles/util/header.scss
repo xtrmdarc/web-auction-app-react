@@ -23,6 +23,10 @@
   }
   
   .userActions {
+
+    .username {
+      margin-right: $closeSpace;
+    }
     
     .config {
       background: #d1fffd;

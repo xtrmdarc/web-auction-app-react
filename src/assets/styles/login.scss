@@ -1,0 +1,44 @@
+@import './variables';
+
+.Login {
+  padding: $broadSpace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin-bottom: $broadSpace;
+  }
+  
+
+  .contentWrapper {
+    width: 400px;
+    max-width: 100%;
+    padding: $broadSpace;
+    box-shadow: $lightBoxShadow;
+    
+    h3 {
+      margin-bottom: $broadSpace;
+    }
+
+    label {
+      display: block;
+      margin-bottom: calc(#{$closeSpace} / 3);
+      font-size: 12px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: calc(#{$closeSpace} / 3);
+      border: none;
+      border-bottom: 1px solid black;
+      font-size: $mediumTextSize;
+    }
+
+    button {
+      margin-top: $closeSpace;
+      @include bidNowButton;
+      width: 100%;
+    }
+  }
+}

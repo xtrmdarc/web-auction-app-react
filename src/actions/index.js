@@ -3,6 +3,7 @@ export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
 export const LOAD_ITEMS = 'LOAD_ITEMS';
 export const PAGINATE_ITEMS = 'PAGINATE_ITEMS';
 export const TOGGLE_SORT = 'TOGGLE_SORT';
+export const LOGIN_USER = 'LOGIN_USER';
 
 export const filterItems = (filter) => {
   return {
@@ -37,3 +38,10 @@ export const toggleSort = () => {
     type: TOGGLE_SORT,
   };
 };
+
+export const loginUser = (user) => {
+  return {
+    type: LOGIN_USER,
+    user,
+  }
+}
