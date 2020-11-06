@@ -1,5 +1,6 @@
 
-@mixin SortButton {
+
+@mixin SortButton() {
   padding: calc(#{$closeSpace} / 2);
   background: $accentColor;
   color: white;
