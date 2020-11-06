@@ -18,12 +18,13 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
       return Object.assign({}, state, {filter: action.filter});
     }
     case LOAD_ITEMS: {
-      // const currentCollection = action.items.slice(state.pagination.currentIdxs[0], state.pagination.currentIdxs[1]);
       return Object.assign({}, state, {collection: action.items});
     }
     case PAGINATE_ITEMS: {
-      
-      return Object.assign({}, state, {pagination: {currentPage: action.page}});
+      const newLowRangeIdx = state.pagination.itemsPerPage * action.page;
+      const newCurrentIdxs = [newLowRangeIdx, newLowRangeIdx + 10];
+
+      return Object.assign({}, state, { pagination: { ...Object.assign({}, state.pagination, {currentPage: action.page, currentIdxs: newCurrentIdxs}) } } );
     }
     default: return state;
   }

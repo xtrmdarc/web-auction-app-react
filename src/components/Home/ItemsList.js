@@ -30,7 +30,7 @@ const Item = (props) => {
 
 const ItemsList = (props) => {
 
-  const {history, filter, setActiveItem, items, setItems, pagination} = props;
+  const {history, filter, setActiveItem, items, setItems, pagination, paginateItems} = props;
 
   const onBidNowClick = (item) => {
     setActiveItem(item);
@@ -44,15 +44,13 @@ const ItemsList = (props) => {
   }, []);
 
   const categoryNameRegex = new RegExp(filter, 'gi');
- 
 
   return (
     <div className="itemsListSection">
       {
-        <PaginationLinks items={items} pagination={pagination} onLinkClick={() => {return;}} />
+        <PaginationLinks items={items} pagination={pagination} paginateItems={paginateItems} />
       }
       <div className="ItemsList">
-        
         {
           items
             .slice(pagination.currentIdxs[0], pagination.currentIdxs[1])
