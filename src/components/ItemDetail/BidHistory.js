@@ -10,7 +10,7 @@ const BidHistory = (props) => {
         bidsHistory.map(bid => 
           (
           <div key={bid.id} className="bidHistoryItem">
-            <span>{bid.user.name} </span>
+            <span>{bid.user.username} </span>
             <span>${bid.amount}</span>
           </div>
           ) 

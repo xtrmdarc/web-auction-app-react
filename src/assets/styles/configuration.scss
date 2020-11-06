@@ -32,5 +32,11 @@
     button {
       @include bidNowButton();
     }
+
+    .errorMessage {
+      font-size: 12px;
+      color: red;
+      margin-bottom: $closeSpace;
+    }
   }
 }

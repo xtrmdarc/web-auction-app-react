@@ -9,7 +9,7 @@ import {withRouter} from 'react-router-dom';
 
 const ItemDetail = props => {
 
-  const {activeItem, setActiveItem, match} = props;
+  const {activeItem, setActiveItem, match, user} = props;
 
   useEffect(() => {
     api.getItem(match.params.itemId)
@@ -23,7 +23,7 @@ const ItemDetail = props => {
       <h1>{activeItem.item_name}</h1>
       <p className="description">{activeItem.description}</p>
       <div className="actionsWrapper">
-        <BidAction item={activeItem} />
+        <BidAction item={activeItem} user={user} setActiveItem={setActiveItem}/>
         <BidHistory bidsHistory={activeItem.bids} />
       </div>
     </div>
@@ -32,6 +32,7 @@ const ItemDetail = props => {
 
 const mapStateToProps = state => ({
   activeItem: state.activeItem,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({

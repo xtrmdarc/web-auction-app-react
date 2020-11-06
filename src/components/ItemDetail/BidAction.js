@@ -3,7 +3,7 @@ import api from '../../services/api';
 import CountDown from '../Util/CountDown';
 
 const BidAction = (props) => {
-  const {item} = props;
+  const {item, user, setActiveItem} = props;
   const [amount, setAmount] = useState(item.lastBid ? item.lastBid.amount + 1 : 0.00);
   const [error, setError] = useState('');
 
@@ -13,10 +13,16 @@ const BidAction = (props) => {
       setError('Your bid needs to be higher than the latest');
       return;
     }
-    api.submitBid(item.id, 1, amount)
+    api.submitBid(item.id, user.id, amount)
       .then(response => {
         if(response.code !== 200) {
           setError(response.message);
+        }
+        else {
+          api.getItem(item.id)
+            .then(item => {
+              setActiveItem(item);
+            });
         }
       });
   }

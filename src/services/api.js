@@ -2,7 +2,7 @@
 
 const api = (() => {
 
-  const domain = 'http://localhost:8000';
+  const domain = 'https://xtrmdarc-web-auction-sc.herokuapp.com';
 
   const getActiveItems = async () => {
     const response = await fetch(`${domain}/items`);
