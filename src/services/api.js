@@ -44,11 +44,25 @@ const api = (() => {
       }),
     });
     const data = await response.json();
+    return data;
+  }
+
+  const updateUserMaxAutoBid = async (maxAutoBidAmount, userId) => {
+    const response = await fetch(`${domain}/user/${userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        max_auto_bid_amount: parseFloat(maxAutoBidAmount),
+      }),
+    });
+    const data = await response.json();
     console.log(data);
     return data;
   }
   
-  return {getActiveItems, getItem, submitBid, login};
+  return {getActiveItems, getItem, submitBid, login, updateUserMaxAutoBid};
 })();
 
 export default api;

@@ -1,0 +1,36 @@
+@import './variables';
+
+
+.Configuration {
+  display: flex;
+  padding: $closeSpace;
+  flex-direction: column;
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    max-width: 100%;
+
+    .mainTitle {
+      margin-bottom: $closeSpace;
+    }
+  
+    .sectionDesc {
+      margin-bottom: $broadSpace;
+    }
+
+    label {
+      font-size: 12px;
+      margin-bottom: calc(#{$closeSpace} / 3);
+    }
+  
+    input[type="text"] {
+      @include formInput();
+      margin-bottom: $closeSpace;
+    }
+
+    button {
+      @include bidNowButton();
+    }
+  }
+}

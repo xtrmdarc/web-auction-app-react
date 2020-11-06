@@ -28,11 +28,7 @@
     }
 
     input[type="text"] {
-      width: 100%;
-      padding: calc(#{$closeSpace} / 3);
-      border: none;
-      border-bottom: 1px solid black;
-      font-size: $mediumTextSize;
+      @include formInput();
     }
 
     button {

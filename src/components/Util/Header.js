@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 const Header = (props) => {
-  const {username} = props;
+  const {userId, username} = props;
 
   return (
     <header className="Header">
@@ -16,7 +16,7 @@ const Header = (props) => {
       </nav>
       <div className="userActions">
         <span className="username">{username}</span>
-        <button className="config">Configuration</button>
+        <button className="config"> <Link to={`/user/${userId}`}>Configuration</Link></button>
       </div>
     </header>
   );

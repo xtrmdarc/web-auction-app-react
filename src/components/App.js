@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './Home';
 import ItemDetail from './ItemDetail';
+import Configurattion from './Configuration';
 import '../assets/styles/app.scss';
 import {
   BrowserRouter as Router,
@@ -16,7 +17,7 @@ import { loginUser } from '../actions';
 const App = props => {
 
   const {user, loginUser} = props;
-  
+  console.log(user);
   return(
     <Router>
       <Switch>
@@ -27,11 +28,15 @@ const App = props => {
           user.loggedIn ? (
           <>
             <Route exact path="/items/:itemId">
-              <Header username={user.username} />
+              <Header username={user.username} userId={user.id} />
               <ItemDetail />
             </Route>
+            <Route exact path="/user/:userId">
+              <Header username={user.username} userId={user.id} />
+              <Configurattion />
+            </Route>
             <Route exact path="/">
-              <Header username={user.username}/>
+              <Header username={user.username} userId={user.id} />
               <Home />
             </Route>
           </>
