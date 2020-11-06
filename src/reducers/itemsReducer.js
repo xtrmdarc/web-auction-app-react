@@ -1,9 +1,9 @@
-import { FILTER_ITEMS, LOAD_ITEMS, PAGINATE_ITEMS } from '../actions';
+import { FILTER_ITEMS, LOAD_ITEMS, PAGINATE_ITEMS, TOGGLE_SORT } from '../actions';
 
 const INITIAL_STATE = {
   filter: '',
   collection: [],
-  sort: '',
+  sort: 1,
   pagination: {
     currentCollection: [],
     currentPage: 0,
@@ -25,6 +25,9 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
       const newCurrentIdxs = [newLowRangeIdx, newLowRangeIdx + 10];
 
       return Object.assign({}, state, { pagination: { ...Object.assign({}, state.pagination, {currentPage: action.page, currentIdxs: newCurrentIdxs}) } } );
+    }
+    case TOGGLE_SORT: {
+      return Object.assign({},state, {sort: state.sort * -1});
     }
     default: return state;
   }

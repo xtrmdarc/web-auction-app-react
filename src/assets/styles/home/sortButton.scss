@@ -1,0 +1,13 @@
+@mixin SortButton {
+  padding: calc(#{$closeSpace} / 2);
+  background: $accentColor;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  box-shadow: $lightBoxShadow;
+}
+
+.SortButton {
+  @include SortButton;
+}

@@ -3,6 +3,7 @@
 @import './home/ItemsFilter.scss';
 @import './home/ItemsList.scss';
 @import './home/PaginationLinks.scss';
+@import './home/SortButton.scss';
 
 .Home {
   padding: 0 $closeSpace;
@@ -16,8 +17,16 @@
     display: flex;
     flex-direction: column;
 
-    .PaginationLinks {
-      align-self: flex-end;
+    .listModifiers {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .SortButton 
+
+      .PaginationLinks {
+        align-self: flex-end;
+      }
     }
   }
 }
