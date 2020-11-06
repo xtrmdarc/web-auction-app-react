@@ -21,7 +21,7 @@ const BidHistory = (props) => {
 }
 
 BidHistory.defaultProps = {
-  bidsHistory: [{id: 1, user: {name: 'Diego Reyes'}, amount: 103}],
+  bidsHistory: [],
 }
 
 export default BidHistory;

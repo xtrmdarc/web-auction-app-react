@@ -19,7 +19,7 @@ const Item = (props) => {
         </div>
       </div>
       <h2><CountDown endDate={item.end_date} /></h2>
-      <h2>${item.last_bid ? item.last_bid.amount : (0.00).toFixed(2)} </h2>
+      <h2>${item.lastBid ? item.lastBid.amount : (0.00).toFixed(2)} </h2>
       <button onClick={() => onBidNowClick(item)} className="bidNowButton">
         Bid now
       </button>

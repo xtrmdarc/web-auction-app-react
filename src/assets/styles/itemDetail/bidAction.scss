@@ -17,6 +17,12 @@
     align-self: flex-end;
     align-items: flex-end;
 
+    .errorMessage {
+      margin-top: calc(#{$closeSpace} / 3);
+      font-size: 12px;
+      color: red;
+    }
+
     label {
       align-self: flex-start;
       margin-bottom: calc(#{$closeSpace} / 3);

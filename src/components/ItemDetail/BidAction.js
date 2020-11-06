@@ -4,12 +4,20 @@ import CountDown from '../Util/CountDown';
 
 const BidAction = (props) => {
   const {item} = props;
-  const [amount, setAmount] = useState(item.last_bid ? item.last_bid.amount : 0.00);
-  
+  const [amount, setAmount] = useState(item.lastBid ? item.lastBid.amount + 1 : 0.00);
+  const [error, setError] = useState('');
+
   const bidNowHandleClick = () => {
+    setError('');
+    if(parseFloat(amount) <= item.lastBid.amount) {
+      setError('Your bid needs to be higher than the latest');
+      return;
+    }
     api.submitBid(item.id, 1, amount)
       .then(response => {
-        console.log(response);
+        if(response.code !== 200) {
+          setError(response.message);
+        }
       });
   }
   
@@ -20,6 +28,7 @@ const BidAction = (props) => {
       <div className="action">
         <label htmlFor="bid"> Your bid starts at </label>
         <input id="bid" type="number" value={amount} onChange={e => setAmount(e.target.value)} />
+        {error && <span className="errorMessage">{error}</span>}
         <div className="bidActionWrapper">
           <label className="autoBid">
             <input type="checkbox" />
