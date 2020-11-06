@@ -2,6 +2,7 @@
 @import './variables';
 @import './home/ItemsFilter.scss';
 @import './home/ItemsList.scss';
+@import './home/PaginationLinks.scss';
 
 .Home {
   padding: 0 $closeSpace;
@@ -9,5 +10,14 @@
   
   .mainTitle {
     margin-top: $broadSpace;
+  }
+
+  .itemsListSection {
+    display: flex;
+    flex-direction: column;
+
+    .PaginationLinks {
+      align-self: flex-end;
+    }
   }
 }

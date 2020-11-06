@@ -9,7 +9,7 @@ const BidAction = (props) => {
 
   const bidNowHandleClick = () => {
     setError('');
-    if(parseFloat(amount) <= item.lastBid.amount) {
+    if(item.lastBid && parseFloat(amount) <= item.lastBid.amount) {
       setError('Your bid needs to be higher than the latest');
       return;
     }

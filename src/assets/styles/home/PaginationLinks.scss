@@ -1,0 +1,26 @@
+
+@mixin PaginationLinks() {
+  display: flex;
+  
+  .link {
+    display: block;
+    padding: calc(#{$closeSpace} / 2) $closeSpace;
+    margin-left: calc(#{$closeSpace} / 3);
+    border-radius: 5px;
+    box-shadow: $lightBoxShadow;
+    
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.selected {
+      background: $accentColor;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+
+.PaginationLinks {
+  @include PaginationLinks;
+}
