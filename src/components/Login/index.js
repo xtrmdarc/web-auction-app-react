@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../../assets/styles/login.scss';
 import api from '../../services/api';
+import AsyncButton from '../Util/AsyncButton';
 
 const Login = (props) => {
 
@@ -8,13 +9,13 @@ const Login = (props) => {
   const [error, setError] = useState('');
   const {loginUser} = props;
 
-  const handleLoginButtonClick = () => {
+  const handleLoginButtonClick = async () => {
     setError('');
     if(!username) {
       setError("Username can't be empty");
       return;
     }
-    api.login(username)
+    await api.login(username)
       .then(user => {
         loginUser(user);
       }).catch(error => {
@@ -30,7 +31,8 @@ const Login = (props) => {
         <label htmlFor="username">Username </label>
         <input id="username" type="text" value={username} onChange={e => setUsername(e.target.value)} />
         {error && <span className="errorMessage">{error}</span>}
-        <button onClick={handleLoginButtonClick}>Login</button>
+        <AsyncButton handleClick={handleLoginButtonClick} title="Login"/>
+        <button >Login</button>
       </div>
     </div>
   );

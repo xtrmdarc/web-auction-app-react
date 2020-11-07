@@ -8,7 +8,7 @@ const persistConfig = {
   key: 'root',
   storage: storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ['user'],
+  whitelist: ['user', 'activeItem'],
 }
 
 const pReducer = persistReducer(persistConfig, rootReducer);

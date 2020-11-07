@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import api from '../../services/api';
+import AsyncButton from '../Util/AsyncButton';
 import CountDown from '../Util/CountDown';
 
 const BidAction = (props) => {
   const {item, user, setActiveItem} = props;
-  const [amount, setAmount] = useState(item.lastBid ? item.lastBid.amount + item.lastBid.auto_bidded_amount + 1 : 0.00);
+  const [amount, setAmount] = useState(item.lastBid ? (item.lastBid.amount + item.lastBid.auto_bidded_amount + 1).toFixed(2) : 0.00);
   const [enableAutoBid, setEnableAutoBid] = useState(false);
   const [error, setError] = useState('');
 
-  const bidNowHandleClick = () => {
+  const bidNowHandleClick = async () => {
     setError('');
     if(item.lastBid && parseFloat(amount) <= item.lastBid.amount) {
       setError('Your bid needs to be higher than the latest');
       return;
     }
-    api.submitBid(item.id, user.id, amount, enableAutoBid)
+    await api.submitBid(item.id, user.id, amount, enableAutoBid)
       .then(response => {
         if(response.code !== 200) {
           setError(response.message);
@@ -41,7 +42,7 @@ const BidAction = (props) => {
             <input type="checkbox" checked={enableAutoBid} onChange={(e) => setEnableAutoBid(e.target.checked)} />
             Enable auto-bid
           </label>
-          <button onClick={bidNowHandleClick}>Bid now</button>
+          <AsyncButton handleClick={bidNowHandleClick} title="Bid now"/>
         </div>
       </div>
     </div>
