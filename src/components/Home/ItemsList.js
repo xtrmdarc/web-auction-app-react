@@ -46,17 +46,17 @@ const ItemsList = (props) => {
   }, []);
 
   const categoryNameRegex = new RegExp(filter, 'gi');
+  const filteredItems = items.filter(item => filter === '' || (`${item.item_name} ${item.description}`).match(categoryNameRegex));
   return (
     <div className="itemsListSection">
       <div className="listModifiers">
         <SortButton title="Price" handleClick={toggleItemSort}/>
-        <PaginationLinks items={items} pagination={pagination} paginateItems={paginateItems} />
+        <PaginationLinks items={filteredItems} pagination={pagination} paginateItems={paginateItems} />
       </div>
       
       <div className="ItemsList">
         {
-          items
-            .filter(item => filter === '' || (`${item.item_name} ${item.description}`).match(categoryNameRegex))
+          filteredItems
             .sort((item, nextItem) => {
               if(sort === 0) return;
               if(sort === 1)
