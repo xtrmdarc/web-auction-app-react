@@ -36,5 +36,11 @@
       @include bidNowButton;
       width: 100%;
     }
+
+    .errorMessage {
+      @include errorMessage;
+      display: flex;
+      margin-top: $closeSpace;
+    }
   }
 }

@@ -88,3 +88,9 @@ a {
   $height: 30px;
   border: 1px solid black;
 }
+
+@mixin errorMessage() {
+  font-size: 12px;
+  color: red;
+  margin-bottom: $closeSpace;
+}

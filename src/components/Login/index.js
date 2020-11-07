@@ -9,10 +9,16 @@ const Login = (props) => {
   const {loginUser} = props;
 
   const handleLoginButtonClick = () => {
-    if(!username) setError("Username can't be empty");
+    setError('');
+    if(!username) {
+      setError("Username can't be empty");
+      return;
+    }
     api.login(username)
       .then(user => {
         loginUser(user);
+      }).catch(error => {
+        setError(error.message);
       });
   }
 
@@ -23,6 +29,7 @@ const Login = (props) => {
         <h3>Login to your account</h3>
         <label htmlFor="username">Username </label>
         <input id="username" type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        {error && <span className="errorMessage">{error}</span>}
         <button onClick={handleLoginButtonClick}>Login</button>
       </div>
     </div>
