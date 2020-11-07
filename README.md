@@ -21,6 +21,14 @@ shopping cart and payment integration are not.
 
 ![Home page](src/assets/images/sc_home.png)
 
+### Test usernames
+
+- tmurazik
+- max.pacocha
+- garret.haley
+- tiffany54
+- kassulke.gillian
+
 ## How to install locally
 
 - Clone this project into your local environment. 
