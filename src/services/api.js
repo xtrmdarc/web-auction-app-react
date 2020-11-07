@@ -2,7 +2,8 @@
 
 const api = (() => {
 
-  const domain = 'https://xtrmdarc-web-auction-sc.herokuapp.com';
+  // const domain = 'https://xtrmdarc-web-auction-sc.herokuapp.com';
+  const domain = 'http://localhost:8000';
 
   const getActiveItems = async () => {
     const response = await fetch(`${domain}/items`);
@@ -16,7 +17,7 @@ const api = (() => {
     return data;
   };
 
-  const submitBid = async ( itemId, userId, amount) => {
+  const submitBid = async ( itemId, userId, amount, enableAutoBid) => {
 
     const response = await fetch(`${domain}/bids`, {
       method: 'POST',
@@ -27,6 +28,7 @@ const api = (() => {
         userId,
         itemId,
         amount,
+        enableAutoBid,
       }),
     });
     const data = await response.json();

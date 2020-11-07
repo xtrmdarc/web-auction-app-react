@@ -11,9 +11,9 @@ const BidHistory = (props) => {
           (
           <div key={bid.id} className="bidHistoryItem">
             <span>{bid.user.username} </span>
-            <span>${bid.amount}</span>
+            <span>${bid.amount + bid.auto_bidded_amount}</span>
           </div>
-          ) 
+          )
         )
         }
     </div>

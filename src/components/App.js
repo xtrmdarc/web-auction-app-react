@@ -17,7 +17,7 @@ import { loginUser } from '../actions';
 const App = props => {
 
   const {user, loginUser} = props;
-  console.log(user);
+
   return(
     <Router>
       <Switch>

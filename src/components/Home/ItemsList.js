@@ -20,7 +20,7 @@ const Item = (props) => {
         </div>
       </div>
       <h2 className="countDown"><CountDown endDate={item.end_date} /></h2>
-      <h2 className="lastBidAmount">${item.lastBid ? item.lastBid.amount : (0.00).toFixed(2)} </h2>
+      <h2 className="lastBidAmount">${item.lastBid ? (parseFloat(item.lastBid.amount) + parseFloat(item.lastBid.auto_bidded_amount)) : (0.00).toFixed(2)} </h2>
       <button onClick={() => onBidNowClick(item)} className="bidNowButton">
         Bid now
       </button>
@@ -58,9 +58,9 @@ const ItemsList = (props) => {
             .sort((item, nextItem) => {
               if(sort === 0) return;
               if(sort === 1)
-                return nextItem.lastBid.amount - item.lastBid.amount;
+                return (nextItem.lastBid.amount + nextItem.lastBid.auto_bidded_amount) - (item.lastBid.amount + item.lastBid.auto_bidded_amount);
               if(sort === -1)
-                return item.lastBid.amount - nextItem.lastBid.amount;
+                return (item.lastBid.amount + item.lastBid.auto_bidded_amount) - (nextItem.lastBid.amount + nextItem.lastBid.auto_bidded_amount);;
             })
             .slice(pagination.currentIdxs[0], pagination.currentIdxs[1])
             .map(item => <Item key={item.id} item={item} onBidNowClick={onBidNowClick} />)
