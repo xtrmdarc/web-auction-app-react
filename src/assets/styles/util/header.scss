@@ -53,6 +53,16 @@
       background: #ffd1d1;
       margin-left: calc(#{$closeSpace} / 2);
     }
+
+    @media screen and (max-width: 764px) {
+      .username { 
+        display: none;
+      }
+
+      .config {
+        display: none;
+      }
+    }
   }
 }
 

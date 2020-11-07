@@ -31,5 +31,18 @@
     .BidHistory {
       width: calc(40% - 10px);
     }
+
+    @media screen and (max-width: 764px) {
+      flex-direction: column;
+
+      .BidAction {
+        width: 100%;
+        margin-bottom: $closeSpace;
+      }
+  
+      .BidHistory {
+        width: 100%;
+      }
+    }
   }
 }
