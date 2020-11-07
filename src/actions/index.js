@@ -5,6 +5,7 @@ export const PAGINATE_ITEMS = 'PAGINATE_ITEMS';
 export const TOGGLE_SORT = 'TOGGLE_SORT';
 export const LOGIN_USER = 'LOGIN_USER';
 export const UPDATE_USER = 'UPDATE_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
 
 export const filterItems = (filter) => {
   return {
@@ -47,9 +48,15 @@ export const loginUser = (user) => {
   }
 }
 
-export const updateUser =(user) => {
+export const updateUser = (user) => {
   return {
     type: UPDATE_USER,
     user,
+  }
+}
+
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER
   }
 }

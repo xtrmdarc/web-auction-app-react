@@ -12,11 +12,11 @@ import {
 import Header from './Util/Header';
 import Login from './Login';
 import {connect} from 'react-redux';
-import { loginUser } from '../actions';
+import { loginUser, logoutUser } from '../actions';
 
 const App = props => {
 
-  const {user, loginUser} = props;
+  const {user, loginUser, logoutUser} = props;
 
   return(
     <Router>
@@ -28,15 +28,15 @@ const App = props => {
           user.loggedIn ? (
           <>
             <Route exact path="/items/:itemId">
-              <Header username={user.username} userId={user.id} />
+              <Header username={user.username} userId={user.id} logoutUser={logoutUser} />
               <ItemDetail />
             </Route>
             <Route exact path="/user/:userId">
-              <Header username={user.username} userId={user.id} />
+              <Header username={user.username} userId={user.id} logoutUser={logoutUser}/>
               <Configurattion />
             </Route>
             <Route exact path="/">
-              <Header username={user.username} userId={user.id} />
+              <Header username={user.username} userId={user.id} logoutUser={logoutUser}/>
               <Home />
             </Route>
           </>
@@ -56,6 +56,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loginUser: (user) => dispatch(loginUser(user)),
+  logoutUser: () => dispatch(logoutUser()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

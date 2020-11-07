@@ -1,4 +1,5 @@
 
+
 @mixin Header {
   display: flex;
   padding: 0 $closeSpace;
@@ -6,21 +7,31 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: $lightBoxShadow;
+  position: relative;
 
   .logo {
     text-decoration: none;
     text-transform: none;
     color: inherit;
+    
   }
-
-  .navigationLinks {
-    display: flex;
-
-    li {
+  .navigation {
+    position: absolute;
+    margin: 0 auto;
+    left: 50%;
+  
+    .navigationLinks {
       display: flex;
-      margin-right: $closeSpace;
+      position: relative;
+      left: -50%;
+  
+      li {
+        display: flex;
+        margin-right: $closeSpace;
+      }
     }
   }
+  
   
   .userActions {
 
@@ -29,9 +40,14 @@
     }
     
     .config {
-      background: #d1fffd;
-      padding: 8px;
-      border-radius: 10px;
+      @include headerAction;
+      background: #d9e3f8;
+    }
+
+    .logout {
+      @include headerAction;
+      background: #ffd1d1;
+      margin-left: calc(#{$closeSpace} / 2);
     }
   }
 }

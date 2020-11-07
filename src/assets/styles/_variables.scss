@@ -28,12 +28,11 @@ $accentColor: rgb(29, 87, 194);
   font-family: $textFontFamily;
 }
 
-
 h1, h2, h3, h4, h5, h6 {
   font-family: $titleFontFamily;
 }
 
-p, span, a, div {
+p, span, a, div, button {
   font-size: $mediumTextSize;
 }
 
@@ -81,4 +80,11 @@ a {
   border: none;
   border-bottom: 1px solid black;
   font-size: $mediumTextSize;
+}
+
+@mixin headerAction() {
+  padding: 8px;
+  border-radius: 10px;
+  $height: 30px;
+  border: 1px solid black;
 }

@@ -7,6 +7,10 @@ const CountDown = (props) => {
   const [timeRemaining, setTimeRemaining] = useState('');
 
   useEffect(() => {
+    setTimeRemaining(util.getTimeRemaining(new Date(endDate.replace(' ', 'T'))));
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setTimeRemaining(util.getTimeRemaining(new Date(endDate.replace(' ', 'T'))));
     }, 1000);

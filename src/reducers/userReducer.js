@@ -1,4 +1,4 @@
-import { LOGIN_USER, UPDATE_USER } from "../actions";
+import { LOGIN_USER, LOGOUT_USER, UPDATE_USER } from "../actions";
 
 const INITIAL_STATE = {
   loggedIn: false,
@@ -11,6 +11,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     }
     case UPDATE_USER: {
       return Object.assign({}, state, action.user);
+    }
+    case LOGOUT_USER: {
+      return {loggedIn: false};
     }
     default: return state;
   }
