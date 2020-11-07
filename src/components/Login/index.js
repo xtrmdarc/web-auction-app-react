@@ -32,7 +32,6 @@ const Login = (props) => {
         <input id="username" type="text" value={username} onChange={e => setUsername(e.target.value)} />
         {error && <span className="errorMessage">{error}</span>}
         <AsyncButton handleClick={handleLoginButtonClick} title="Login"/>
-        <button >Login</button>
       </div>
     </div>
   );

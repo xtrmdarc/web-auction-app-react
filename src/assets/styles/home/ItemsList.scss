@@ -13,12 +13,27 @@
     padding: calc(#{$closeSpace} * 1.5) 0;
     justify-content: space-between;
     border-bottom: 0.4px solid rgba(146, 146, 146, 0.349);
+
+    @media screen and (max-width: 764px) {
+      flex-direction: column;
+    }
     
     .leftSide {
       display: flex;
       width: 45%;
+      @media screen and (max-width: 764px) {
+        flex-direction: column;
+        width: 100%;
+      }
+    
       .image {
         margin-right: calc(#{$closeSpace} * 1.4);
+
+        @media screen and (max-width: 764px) {
+          order: 2;
+          align-self: center;
+          margin-top: $closeSpace;
+        }
       }
   
       .info {
@@ -35,15 +50,30 @@
     .countDown {
       width: 20%;
       text-align: right;
+
+      @media screen and (max-width: 764px) {
+        width: 100%;
+        margin-top: $closeSpace;
+      }
     }
 
     .lastBidAmount {
       width: 10%;
       text-align: right;
+
+      @media screen and (max-width: 764px) {
+        width: 100%;
+        margin-top: $closeSpace;
+      }
     }
 
     .bidNowButton {
       @include bidNowButton();
+
+      @media screen and (max-width: 764px) {
+        width: 100%;
+        margin-top: $closeSpace;
+      }
     }
   }
 

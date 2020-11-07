@@ -19,6 +19,10 @@
     position: absolute;
     margin: 0 auto;
     left: 50%;
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
   
     .navigationLinks {
       display: flex;
