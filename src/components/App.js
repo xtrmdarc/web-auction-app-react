@@ -12,7 +12,7 @@ import {
 import Header from './Util/Header';
 import Login from './Login';
 import {connect} from 'react-redux';
-import { loginUser, logoutUser } from '../actions';
+import { filterItems, loginUser, logoutUser } from '../actions';
 
 const App = props => {
 
@@ -56,7 +56,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loginUser: (user) => dispatch(loginUser(user)),
-  logoutUser: () => dispatch(logoutUser()),
+  logoutUser: () => {
+    dispatch(filterItems(''));
+    dispatch(logoutUser());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
