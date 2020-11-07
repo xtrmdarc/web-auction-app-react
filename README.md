@@ -40,6 +40,7 @@ shopping cart and payment integration are not.
 
 - Add realtime updates to user for outbidded bids.
 - Handle auction winner scenario.
+- Add unit tests
 
 ## Authors
 
